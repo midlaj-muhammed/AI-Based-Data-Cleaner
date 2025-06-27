@@ -1,13 +1,5 @@
-# System packages for Streamlit Cloud deployment
-# These packages will be installed via apt-get
-
-# Required for pandas and numpy compilation
 build-essential
 python3-dev
-
-# Required for Excel file processing
 libxml2-dev
 libxslt1-dev
-
-# Required for phonenumbers library
 libicu-dev
