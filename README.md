@@ -7,6 +7,10 @@
 
 A comprehensive AI-powered data cleaning and validation web application that goes beyond basic data cleaning to detect logical inconsistencies, business rule violations, and sophisticated data quality issues. Built with Python, Streamlit, and OpenAI's GPT API.
 
+## 🚀 **[Try the Live Demo](https://ai-based-data-cleaner.streamlit.app/)**
+
+Experience the AI Data Cleaner in action! Upload your CSV or Excel files and see the advanced data quality validation features in real-time.
+
 ## ✨ Key Features
 
 ### 🧹 **Core Data Cleaning**
@@ -42,7 +46,7 @@ A comprehensive AI-powered data cleaning and validation web application that goe
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/Ai_Based_Data_Cleaner.git
+   git clone https://github.com/midlaj-muhammedAi_Based_Data_Cleaner.git
    cd Ai_Based_Data_Cleaner
    ```
 
@@ -81,7 +85,7 @@ A comprehensive AI-powered data cleaning and validation web application that goe
 
 1. **Clone and install**
    ```bash
-   git clone https://github.com/your-username/Ai_Based_Data_Cleaner.git
+   git clone https://github.com/midlaj-muhammed/Ai_Based_Data_Cleaner.git
    cd Ai_Based_Data_Cleaner
    pip install -r requirements.txt
    ```
@@ -625,7 +629,7 @@ We welcome contributions to improve the AI Data Cleaner! Here's how you can help
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally
    ```bash
-   git clone https://github.com/your-username/Ai_Based_Data_Cleaner.git
+   git clone https://github.com/midlaj-muhammed/Ai_Based_Data_Cleaner.git
    cd Ai_Based_Data_Cleaner
    ```
 3. **Create a feature branch**
