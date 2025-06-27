@@ -30,6 +30,13 @@ class Config:
     def validate_config(cls):
         """Validate required configuration"""
         if not cls.OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY is required. Please set it in your .env file.")
-        
+            import streamlit as st
+            st.warning("⚠️ OpenAI API key not configured. AI-powered features will be disabled. Please add your API key in Streamlit Cloud secrets or .env file.")
+            return False
+
         return True
+
+    @classmethod
+    def is_ai_enabled(cls):
+        """Check if AI features are available"""
+        return bool(cls.OPENAI_API_KEY)

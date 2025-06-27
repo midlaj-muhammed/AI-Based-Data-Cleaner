@@ -14,28 +14,36 @@ class AICleaner:
     
     def __init__(self):
         """Initialize AI cleaner with OpenAI configuration"""
-        try:
-            Config.validate_config()
-            openai.api_key = Config.OPENAI_API_KEY
-            self.model = Config.OPENAI_MODEL
-            self.max_tokens = Config.MAX_TOKENS
-            self.temperature = Config.TEMPERATURE
-            logger.info("AI Cleaner initialized successfully")
-        except Exception as e:
-            logger.error(f"Failed to initialize AI Cleaner: {str(e)}")
-            raise
+        self.ai_enabled = Config.validate_config()
+
+        if self.ai_enabled:
+            try:
+                openai.api_key = Config.OPENAI_API_KEY
+                self.model = Config.OPENAI_MODEL
+                self.max_tokens = Config.MAX_TOKENS
+                self.temperature = Config.TEMPERATURE
+                logger.info("AI Cleaner initialized successfully")
+            except Exception as e:
+                logger.error(f"Failed to initialize AI Cleaner: {str(e)}")
+                self.ai_enabled = False
+        else:
+            logger.warning("AI Cleaner initialized without API key - AI features disabled")
     
     def clean_text_column(self, series: pd.Series, column_name: str) -> Tuple[pd.Series, List[Dict]]:
         """
         Clean text data in a column using AI
-        
+
         Args:
             series: pandas Series containing text data
             column_name: Name of the column being cleaned
-            
+
         Returns:
             Tuple of (cleaned_series, list_of_changes)
         """
+        if not self.ai_enabled:
+            logger.warning(f"AI cleaning skipped for column '{column_name}' - API key not configured")
+            return series.copy(), []
+
         changes = []
         cleaned_series = series.copy()
         
@@ -76,19 +84,23 @@ class AICleaner:
         
         return cleaned_series, changes
     
-    def suggest_missing_values(self, series: pd.Series, column_name: str, 
+    def suggest_missing_values(self, series: pd.Series, column_name: str,
                              context_columns: Optional[List[str]] = None) -> Tuple[pd.Series, List[Dict]]:
         """
         Suggest values for missing data using AI
-        
+
         Args:
             series: pandas Series with missing values
             column_name: Name of the column
             context_columns: List of related column names for context
-            
+
         Returns:
             Tuple of (series_with_suggestions, list_of_changes)
         """
+        if not self.ai_enabled:
+            logger.warning(f"AI missing value suggestion skipped for column '{column_name}' - API key not configured")
+            return series.copy(), []
+
         changes = []
         filled_series = series.copy()
         
