@@ -135,8 +135,8 @@ Thumbs.db
 *.swo
 *~
 
-# Streamlit
-.streamlit/
+# Streamlit (allow config.toml but exclude secrets.toml)
+.streamlit/secrets.toml
 
 # Data files (optional - uncomment if you don't want to track data files)
 # *.csv
