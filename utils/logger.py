@@ -3,6 +3,7 @@ Logging utility for AI-Based Data Cleaner
 """
 import logging
 import sys
+import os
 from datetime import datetime
 from config import Config
 
@@ -34,9 +35,12 @@ def setup_logger(name: str = "data_cleaner") -> logging.Logger:
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
     
-    # File handler
+    # File handler - create logs directory if it doesn't exist
+    logs_dir = 'logs'
+    os.makedirs(logs_dir, exist_ok=True)
+
     file_handler = logging.FileHandler(
-        f'logs/data_cleaner_{datetime.now().strftime("%Y%m%d")}.log'
+        f'{logs_dir}/data_cleaner_{datetime.now().strftime("%Y%m%d")}.log'
     )
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
