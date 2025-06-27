@@ -512,6 +512,111 @@ All errors are logged to the `logs/` directory and presented with:
 - **Audit Trail**: Complete logging of all operations performed
 - **Data Sovereignty**: Your data never leaves your control (except for optional AI features)
 
+## 🚀 Deployment
+
+### **Streamlit Cloud Deployment** ⭐ **RECOMMENDED**
+
+Deploy your AI Data Cleaner to Streamlit Cloud for easy sharing and access:
+
+#### **Quick Deploy**
+1. **Fork this repository** to your GitHub account
+2. **Visit [share.streamlit.io](https://share.streamlit.io)**
+3. **Connect your GitHub account** and select the forked repository
+4. **Set main file path**: `app.py`
+5. **Configure secrets** (see below)
+6. **Deploy!** Your app will be live in minutes
+
+#### **Environment Configuration**
+Add your OpenAI API key in Streamlit Cloud secrets:
+
+1. Go to your app settings in Streamlit Cloud
+2. Navigate to **"Secrets"** section
+3. Add the following TOML configuration:
+   ```toml
+   OPENAI_API_KEY = "your_openai_api_key_here"
+   ```
+
+#### **Deployment Features**
+- ✅ **Automatic Updates**: Syncs with your GitHub repository
+- ✅ **HTTPS Security**: Secure connection by default
+- ✅ **Global CDN**: Fast loading worldwide
+- ✅ **Free Tier Available**: No cost for public repositories
+- ✅ **Custom Domains**: Use your own domain (paid plans)
+
+#### **App URL Structure**
+Your deployed app will be available at:
+```
+https://your-app-name.streamlit.app
+```
+
+### **Local Development Deployment**
+
+For development and testing purposes:
+
+```bash
+# Clone the repository
+git clone https://github.com/midlaj-muhammed/AI-Based-Data-Cleaner.git
+cd AI-Based-Data-Cleaner
+
+# Set up virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+# Edit .env and add your OpenAI API key
+
+# Run the application
+streamlit run app.py
+```
+
+### **Docker Deployment** (Advanced)
+
+Create a `Dockerfile` for containerized deployment:
+
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+```
+
+Build and run:
+```bash
+docker build -t ai-data-cleaner .
+docker run -p 8501:8501 -e OPENAI_API_KEY=your_key ai-data-cleaner
+```
+
+### **Production Considerations**
+
+#### **Security**
+- 🔐 **API Key Management**: Use environment variables or secrets management
+- 🛡️ **HTTPS Only**: Ensure secure connections in production
+- 🔒 **Access Control**: Consider authentication for sensitive data
+- 📝 **Audit Logging**: Enable comprehensive logging for compliance
+
+#### **Performance**
+- 🚀 **Resource Limits**: Configure appropriate CPU/memory limits
+- 📊 **Monitoring**: Set up application performance monitoring
+- 🔄 **Auto-scaling**: Configure scaling based on usage
+- 💾 **Caching**: Implement caching for frequently accessed data
+
+#### **Reliability**
+- 🔄 **Health Checks**: Implement application health endpoints
+- 📈 **Error Tracking**: Set up error monitoring and alerting
+- 💾 **Backup Strategy**: Regular backup of configuration and logs
+- 🔧 **Maintenance Windows**: Plan for updates and maintenance
+
 ## 🤝 Contributing
 
 We welcome contributions to improve the AI Data Cleaner! Here's how you can help:
