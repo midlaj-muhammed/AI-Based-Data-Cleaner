@@ -35,14 +35,7 @@ def setup_logger(name: str = "data_cleaner") -> logging.Logger:
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
     
-    # File handler - create logs directory if it doesn't exist
-    logs_dir = 'logs'
-    os.makedirs(logs_dir, exist_ok=True)
-
-    file_handler = logging.FileHandler(
-        f'{logs_dir}/data_cleaner_{datetime.now().strftime("%Y%m%d")}.log'
-    )
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
+    # File handler is disabled to avoid permission issues in hosted environments
+    # Logs will be output to console only
     
     return logger

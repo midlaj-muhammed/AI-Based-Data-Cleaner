@@ -7,7 +7,9 @@
 
 A comprehensive AI-powered data cleaning and validation web application that goes beyond basic data cleaning to detect logical inconsistencies, business rule violations, and sophisticated data quality issues. Built with Python, Streamlit, and OpenAI's GPT API.
 
-## 🚀 **[Try the Live Demo](https://ai-based-data-cleaner.streamlit.app/)**
+## 🚀 **[Try the Live Demo on Streamlit Cloud](https://ai-based-data-cleaner.streamlit.app/)**
+
+## 🚀 **[Try the Live Demo on Hugging Face](https://huggingface.co/spaces/midlajvalappil/AI-Based-Data-Cleaner)**
 
 Experience the AI Data Cleaner in action! Upload your CSV or Excel files and see the advanced data quality validation features in real-time.
 
